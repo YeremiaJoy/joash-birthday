@@ -122,7 +122,7 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="px-4 py-10 bg-[#8FC4B7]"
+        className="-mt-px px-4 py-10 bg-[#8FC4B7]"
         id="rsvp"
       >
         <h2 className="font-heading text-3xl text-center text-[#F8FBFF] mb-2">
@@ -130,7 +130,7 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
         </h2>
         <p className="text-center text-[#F8FBFF] font-body mb-6 text-sm">
           This invitation is valid for up to{" "}
-          <span className="font-bold text-[#E8D5B7]">
+          <span className="font-bold text-[#1c6e95]">
             {validFor} person{validFor !== 1 ? "s" : ""}
           </span>
         </p>

@@ -64,7 +64,7 @@ export default function WishesWall() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="px-4 py-10 bg-gradient-to-b from-[#A8D8EA] to-[#C5DFF0]"
+      className="-mt-px px-4 py-10 bg-gradient-to-b from-[#A8D8EA] to-[#C5DFF0]"
     >
       <h2 className="font-heading text-3xl text-center text-[#2C5F7A] mb-6">
         Wishes for Joash 🐚

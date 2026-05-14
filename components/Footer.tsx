@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <>
       <WaveDivider fill="#2C5F7A" />
-      <footer className="px-4 py-10 bg-[#2C5F7A] text-center">
+      <footer className="-mt-px px-4 py-10 bg-[#2C5F7A] text-center">
         <div className="flex items-center justify-center gap-4 mb-4">
           <OceanShell size={32} />
           <span className="text-3xl">🌊</span>

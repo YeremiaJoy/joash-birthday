@@ -64,8 +64,8 @@ body {
 
 /* Fish swimming right-to-left */
 @keyframes fish-swim {
-  0%   { transform: translateX(calc(100vw + 80px)); }
-  100% { transform: translateX(-120px); }
+  0% { transform: translateX(-120px); }
+  100% { transform: translateX(calc(100vw + 80px)); }
 }
 
 /* Seaweed gentle sway */

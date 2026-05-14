@@ -105,7 +105,7 @@ Browser
 
 ### `<EventDetails />`
 - Date: Saturday, July 11, 2026
-- Time: 15.30 WIB (Jakarta Time)
+- Time: 15.30 WIB
 - Venue: HokBen Trina Buah Batu
 - Address: Jl. Buah Batu No.229, Turangga, Kec. Lengkong, Kota Bandung, Jawa Barat 40264
 - "Get Directions" button → Google Maps link, `target="_blank" rel="noopener noreferrer"`

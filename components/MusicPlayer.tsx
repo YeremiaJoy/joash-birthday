@@ -13,16 +13,19 @@ export default function MusicPlayer() {
   useEffect(() => {
     audioRef.current = new Audio(AUDIO_URL);
     audioRef.current.loop = true;
-    audioRef.current.muted = muted;
+    // Start unmuted; audible autoplay may be blocked by browser policies
+    audioRef.current.muted = false;
+
+    audioRef.current.play().then(() => {
+      setStarted(true);
+    }).catch(() => {
+      // Autoplay blocked — playback will start on first user interaction
+    });
 
     return () => {
       audioRef.current?.pause();
       audioRef.current = null;
     };
-  }, []);
-
-  useEffect(() => {
-    setMuted(localStorage.getItem("joash-music-muted") === "true");
   }, []);
 
   useEffect(() => {
@@ -54,7 +57,6 @@ export default function MusicPlayer() {
         setStarted(true);
       }
     }
-    localStorage.setItem("joash-music-muted", String(next));
   }
 
   return (

@@ -19,7 +19,7 @@ export default function EventDetails() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative px-4 py-10 bg-gradient-to-b from-[#E8D5B7] to-[#C5DFF0] overflow-hidden"
+        className="relative -mt-px px-4 py-10 bg-gradient-to-b from-[#E8D5B7] to-[#C5DFF0] overflow-hidden"
       >
         {/* Seaweed left edge */}
         <OceanSeaweed
@@ -46,7 +46,7 @@ export default function EventDetails() {
             <span className="text-2xl">🕞</span>
             <div>
               <p className="font-heading text-lg text-[#2C5F7A]">
-                15.30 WIB (Jakarta Time)
+                15.30 WIB
               </p>
               <p className="font-body text-[#8FC4B7] text-sm">Time</p>
             </div>
@@ -81,14 +81,12 @@ export default function EventDetails() {
           </div>
         </div>
 
-        <div className="border-4 border-dashed border-[#8FC4B7] rounded-3xl bg-[#E8F4FD] flex flex-col items-center justify-center py-10 mb-6 relative z-10">
-          <span className="text-4xl mb-2">📍</span>
-          <span className="font-body text-[#8FC4B7] text-sm text-center px-4">
-            HokBen Trina Buah Batu
-          </span>
-          <span className="font-body text-[#A8D8EA] text-xs text-center px-4 mt-1">
-            [ Map Preview ]
-          </span>
+        <div className="overflow-hidden border-4 border-dashed border-[#8FC4B7] rounded-3xl bg-[#E8F4FD] flex flex-col items-center justify-center mb-6 relative z-10">
+          <img
+            src="/maps.png"
+            alt="Map preview"
+            className="w-full rounded-2xl shadow-sm"
+          />
         </div>
 
         <a
@@ -97,7 +95,7 @@ export default function EventDetails() {
           rel="noopener noreferrer"
           className="block w-full bg-[#E8967A] text-[#F8FBFF] font-heading text-xl text-center py-4 rounded-full hover:scale-105 active:scale-95 transition-transform min-h-[44px] relative z-10"
         >
-          Get Directions 🗺️
+          📍 Get directions
         </a>
       </motion.section>
     </>

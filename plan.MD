@@ -130,7 +130,7 @@ name present → pass decoded string to <PersonalizedBanner />
 
 ### `<EventDetails />`
 - Date: Saturday, July 11, 2026
-- Time: 15.30 WIB (Jakarta Time)
+- Time: 15.30 WIB
 - Venue: HokBen Trina Buah Batu
 - Address: Jl. Buah Batu No.229, Turangga, Kec. Lengkong, Kota Bandung, Jawa Barat 40264
 - "Get Directions" button → opens Google Maps URL in new tab
@@ -377,7 +377,7 @@ The invitation URL supports two query params:
 
 ### SECTION 3: Event Details
 - Date: Saturday, July 11, 2026
-- Time: 15.30 WIB (Jakarta Time)
+- Time: 15.30 WIB
 - Venue: HokBen Trina Buah Batu
 - Address: Jl. Buah Batu No.229, Turangga, Kec. Lengkong, Kota Bandung, Jawa Barat 40264
 - "Get Directions" button → href: https://www.google.com/maps?vet=10CAAQoqAOahcKEwi4ws2M0LiUAxUAAAAAHQAAAAAQCQ..i&rlz=1C5FPAB_en&pvq=CgsvZy8xdGRocDNtdyIQCgpob2thIGJlbnRvEAIYAw&lqi=ChRob2thIGJlbnRvIGJ1YWggYmF0dUj7nOrH5YCAgAhaIhAAEAEYAhgDIhRob2thIGJlbnRvIGJ1YWggYmF0dTICaWSSARNqYXBhbmVzZV9yZXN0YXVyYW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU5CYVU5ZmFsbG5FQUW6AQcKBWJlbnRv-gEECAAQJA&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=id&sa=X&geocode=KWdNOxJj6GguMWUKfyRhSTPK&daddr=Jl.+Buah+Batu+No.229,+Turangga,+Kec.+Lengkong,+Kota+Bandung,+Jawa+Barat+40264

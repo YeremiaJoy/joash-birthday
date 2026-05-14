@@ -1394,7 +1394,7 @@ export default function EventDetails() {
           <span className="text-2xl">🕞</span>
           <div>
             <p className="font-heading text-lg text-gray-800">
-              15.30 WIB (Jakarta Time)
+              15.30 WIB
             </p>
             <p className="font-body text-gray-500 text-sm">Time</p>
           </div>

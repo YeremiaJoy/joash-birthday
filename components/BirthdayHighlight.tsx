@@ -22,7 +22,7 @@ export default function BirthdayHighlight() {
           size={38}
           animationDuration="14s"
           animationDelay="2s"
-          style={{ top: 32 }}
+          style={{ top: 22 }}
         />
         <OceanFish
           size={28}
@@ -32,22 +32,24 @@ export default function BirthdayHighlight() {
           style={{ top: 80 }}
         />
 
-        <div className="bg-gradient-to-br from-[#E8F4FD] to-[#C5DFF0] rounded-4xl p-6 shadow-sm mb-6 relative">
-          <div className="text-center mb-4">
-            <span className="text-4xl">🐋🌊🐠</span>
-          </div>
-          <h2 className="font-heading text-3xl text-center text-[#2C5F7A] mb-4">
-            The Birthday Boy!
-          </h2>
-          <div className="space-y-2 text-center font-body text-[#2C5F7A]">
-            <p className="text-xl font-bold">Joash Jidly Yakobus</p>
-            <p>Born: July 6, 2025 👶</p>
-            <p className="font-bold text-lg text-[#E8967A]">Turning 1 Year Old 🐚</p>
-            <p>Party: July 11, 2026 🎉</p>
+        <div className="bg-gradient-to-br from-[#E8F4FD] to-[#C5DFF0] rounded-4xl shadow-sm mb-6 relative">
+          <div className="px-6 pt-6">
+            <div className="text-center mb-4">
+              <span className="text-4xl">🐋 🌊 🐠</span>
+            </div>
+            <h2 className="font-heading text-3xl text-center text-[#2C5F7A] mb-4">
+              The Birthday Boy!
+            </h2>
+            <div className="space-y-2 text-center font-body text-[#2C5F7A]">
+              <p className="text-xl font-bold">Joash Jidly Yakobus</p>
+              <p>Born: July 6, 2025 👶</p>
+              <p className="font-bold text-lg text-[#E8967A]">Turning 1 Year Old 🐚</p>
+              <p>Party: July 11, 2026 🎉</p>
+            </div>
           </div>
 
           {/* Turtle swimming at the bottom of the card */}
-          <div className="relative h-16 mt-4 overflow-hidden rounded-xl">
+          <div className="relative h-16 mt-4 mb-6 overflow-hidden rounded-xl">
             <OceanTurtle size={60} animationDuration="20s" animationDelay="1s" />
           </div>
         </div>
