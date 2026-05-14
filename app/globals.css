@@ -1,26 +1,81 @@
+/* app/globals.css */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Ocean theme: custom colors and font families for Tailwind v4 */
+@theme {
+  /* Ocean palette */
+  --color-ocean-sky: #E8F4FD;
+  --color-ocean-shallow: #C5DFF0;
+  --color-ocean-mid: #A8D8EA;
+  --color-ocean-teal: #8FC4B7;
+  --color-ocean-sand: #E8D5B7;
+  --color-ocean-coral: #E8967A;
+  --color-ocean-foam: #F8FBFF;
+  --color-ocean-deep: #2C5F7A;
+  --color-ocean-seaweed: #6BAF9A;
+
+  /* Legacy alias — components using text-coral/bg-coral get ocean-coral */
+  --color-coral: #E8967A;
+
+  --font-heading: var(--font-bubblegum), cursive;
+  --font-body: var(--font-nunito), sans-serif;
+
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito), sans-serif;
+  overflow-x: hidden;
+  background-color: #E8F4FD;
+}
+
+/* Rising bubbles */
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(8px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-4px);
+    opacity: 0;
+  }
+}
+
+/* Jellyfish gentle float */
+@keyframes jellyfish-float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* Turtle slowly swimming across */
+@keyframes turtle-swim {
+  0%   { transform: translateX(-120px); }
+  100% { transform: translateX(calc(100vw + 120px)); }
+}
+
+/* Fish swimming right-to-left */
+@keyframes fish-swim {
+  0%   { transform: translateX(calc(100vw + 80px)); }
+  100% { transform: translateX(-120px); }
+}
+
+/* Seaweed gentle sway */
+@keyframes seaweed-sway {
+  0%   { transform: rotate(-8deg); }
+  100% { transform: rotate(8deg); }
+}
+
+/* Music button bounce */
+@keyframes bounce-music {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }

@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joash's 1st Birthday Invitation
 
-## Getting Started
+Mobile-first birthday invitation website for Joash Jidly Yakobus (turning 1 on July 11, 2026).
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- Supabase
+- Vercel
+
+## Setup
+
+1. Clone the repo
+2. Install dependencies: `npm install`
+3. Copy env template: `cp .env.local.example .env.local`
+4. Fill in your Supabase credentials in `.env.local`
+5. Run the DB migration in Supabase SQL Editor (`supabase/migrations/001_create_rsvp_table.sql`)
+6. Run dev server: `npm run dev`
+
+## Invite URL Format
+
+```
+https://your-domain.com/invite?name=Keluarga+Budi&validFor=4
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Param | Required | Description |
+|---|---|---|
+| `name` | No | Guest name shown in personalized banner |
+| `validFor` | No | Max attendees (defaults to 1 if missing/invalid, capped at 20) |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment (Vercel)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push to GitHub
+2. Import project in Vercel
+3. Add env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy
 
-## Learn More
+## Before Going Live
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] Replace polaroid placeholder in `components/HeroSection.tsx` with `<Image />` pointing to Joash's actual photo
+- [ ] Replace video placeholder in `components/BirthdayHighlight.tsx` with real video embed
+- [ ] Replace audio URL in `components/MusicPlayer.tsx` with royalty-free kids song (pixabay.com/music)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Example Invite URLs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Scenario | URL |
+|---|---|
+| Single guest (default) | `/invite` |
+| Family of 4 with name | `/invite?name=Keluarga+Budi&validFor=4` |
+| Couple with name | `/invite?name=Budi+%26+Sari&validFor=2` |
+| Large group | `/invite?name=Tim+Kantor&validFor=10` |
