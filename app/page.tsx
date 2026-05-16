@@ -7,6 +7,7 @@ import RSVPForm from "@/components/RSVPForm";
 import WishesWall from "@/components/WishesWall";
 import MusicPlayer from "@/components/MusicPlayer";
 import Footer from "@/components/Footer";
+import EnvelopeIntro from "@/components/EnvelopeIntro";
 
 interface InvitePageProps {
   searchParams: Promise<{ name?: string; validFor?: string }>;
@@ -25,15 +26,17 @@ export default async function InvitePage({ searchParams }: InvitePageProps) {
   const validFor = parseValidFor(params.validFor);
 
   return (
-    <main className="max-w-[430px] mx-auto min-h-screen relative">
-      {name && <PersonalizedBanner name={name} />}
-      <HeroSection />
-      <BirthdayHighlight />
-      <EventDetails />
-      <RSVPForm validFor={validFor} name={name} />
-      <WishesWall />
-      <Footer />
-      <MusicPlayer />
-    </main>
+    <EnvelopeIntro>
+      <main className="max-w-[430px] mx-auto min-h-screen relative">
+        {name && <PersonalizedBanner name={name} />}
+        <HeroSection />
+        <BirthdayHighlight />
+        <EventDetails />
+        <RSVPForm validFor={validFor} name={name} />
+        <WishesWall />
+        <Footer />
+        <MusicPlayer />
+      </main>
+    </EnvelopeIntro>
   );
 }

@@ -42,9 +42,9 @@ export default function BirthdayHighlight() {
             </h2>
             <div className="space-y-2 text-center font-body text-[#2C5F7A]">
               <p className="text-xl font-bold">Joash Jidly Yakobus</p>
-              <p>Born: July 6, 2025 👶</p>
+              <p>Born: 6 July 2025 👶</p>
               <p className="font-bold text-lg text-[#E8967A]">Turning 1 Year Old 🐚</p>
-              <p>Party: July 11, 2026 🎉</p>
+              <p>Party: 11 July 2026 🎉</p>
             </div>
           </div>
 

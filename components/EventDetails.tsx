@@ -37,7 +37,7 @@ export default function EventDetails() {
             <span className="text-2xl">📅</span>
             <div>
               <p className="font-heading text-lg text-[#2C5F7A]">
-                Saturday, July 11, 2026
+                Saturday, 11 July 2026
               </p>
               <p className="font-body text-[#8FC4B7] text-sm">Date</p>
             </div>
