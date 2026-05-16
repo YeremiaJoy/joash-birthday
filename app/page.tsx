@@ -8,22 +8,16 @@ import WishesWall from "@/components/WishesWall";
 import MusicPlayer from "@/components/MusicPlayer";
 import Footer from "@/components/Footer";
 import EnvelopeIntro from "@/components/EnvelopeIntro";
+import { findInvitee } from "@/lib/invitation";
 
 interface InvitePageProps {
-  searchParams: Promise<{ name?: string; validFor?: string }>;
-}
-
-function parseValidFor(raw: string | undefined): number {
-  if (!raw) return 1;
-  const parsed = parseInt(raw, 10);
-  if (isNaN(parsed) || parsed < 1) return 1;
-  return Math.min(parsed, 20);
+  searchParams: Promise<{ name?: string }>;
 }
 
 export default async function InvitePage({ searchParams }: InvitePageProps) {
   const params = await searchParams;
   const name = params.name ? decodeURIComponent(params.name) : null;
-  const validFor = parseValidFor(params.validFor);
+  const invitee = name ? findInvitee(name) : null;
 
   return (
     <EnvelopeIntro>
@@ -32,7 +26,11 @@ export default async function InvitePage({ searchParams }: InvitePageProps) {
         <HeroSection />
         <BirthdayHighlight />
         <EventDetails />
-        <RSVPForm validFor={validFor} name={name} />
+        <RSVPForm
+          maxAdults={invitee?.adults ?? null}
+          maxChildren={invitee?.children ?? null}
+          name={name}
+        />
         <WishesWall />
         <Footer />
         <MusicPlayer />

@@ -6,16 +6,17 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { rsvpSchema, type RsvpInput } from "@/lib/validations";
-import { supabase } from "@/lib/supabase";
 import SuccessOverlay from "./SuccessOverlay";
 import WaveDivider from "./ocean/WaveDivider";
 
 interface RSVPFormProps {
-  validFor: number;
+  maxAdults: number | null;
+  maxChildren: number | null;
   name: string | null;
 }
 
-export default function RSVPForm({ validFor, name }: RSVPFormProps) {
+export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps) {
+  const authorized = maxAdults !== null && maxChildren !== null;
   const [showSuccess, setShowSuccess] = useState(false);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
@@ -33,13 +34,12 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
     defaultValues: {
       adult_attendees: 1,
       child_attendees: 0,
-      valid_for: validFor,
       name: name ?? "",
     },
   });
 
   function incrementAdults() {
-    if (adults + children < validFor) {
+    if (maxAdults !== null && adults < maxAdults) {
       const next = adults + 1;
       setAdults(next);
       setValue("adult_attendees", next);
@@ -55,7 +55,7 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
   }
 
   function incrementChildren() {
-    if (adults + children < validFor) {
+    if (maxChildren !== null && children < maxChildren) {
       const next = children + 1;
       setChildren(next);
       setValue("child_attendees", next);
@@ -73,18 +73,22 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
   async function onSubmit(data: RsvpInput) {
     setToast(null);
     try {
-      const { error } = await supabase.from("rsvp").insert({
-        name: data.name,
-        phone: data.phone,
-        adult_attendees: data.adult_attendees,
-        child_attendees: data.child_attendees,
-        valid_for: data.valid_for,
-        will_attend: data.will_attend,
-        message: data.message ?? null,
+      const res = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          adult_attendees: data.adult_attendees,
+          child_attendees: data.child_attendees,
+          will_attend: data.will_attend,
+          message: data.message ?? null,
+        }),
       });
 
-      if (error) {
-        setToast(error.message ?? "Something went wrong. Please try again.");
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        setToast((json as { error?: string }).error ?? "Something went wrong. Please try again.");
         return;
       }
       reset();
@@ -128,23 +132,41 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
         <h2 className="font-heading text-3xl text-center text-[#F8FBFF] mb-2">
           RSVP 🐠
         </h2>
-        <p className="text-center text-[#F8FBFF] font-body mb-6 text-sm">
-          This invitation is valid for up to{" "}
-          <span className="font-bold text-[#1c6e95]">
-            {validFor} person{validFor !== 1 ? "s" : ""}
-          </span>
-        </p>
+        {authorized ? (
+          <p className="text-center text-[#F8FBFF] font-body mb-6 text-sm">
+            This invitation allows up to{" "}
+            <span className="font-bold text-[#1c6e95]">
+              {maxAdults} adult{maxAdults !== 1 ? "s" : ""}
+            </span>
+            {maxChildren! > 0 && (
+              <> &amp; <span className="font-bold text-[#1c6e95]">{maxChildren} child{maxChildren !== 1 ? "ren" : ""}</span></>
+            )}
+          </p>
+        ) : (
+          <p className="text-center text-[#F8FBFF] font-body mb-6 text-sm">
+            {name ? "Your name is not on the invitation list." : "No invitation found."}
+          </p>
+        )}
 
         <div className="bg-[#F8FBFF] rounded-4xl p-6 shadow-sm">
-        {toast && (
+        {!authorized && (
+          <div className="text-center py-6">
+            <p className="font-heading text-2xl text-[#2C5F7A] mb-2">🚫</p>
+            <p className="font-body text-gray-600 text-sm">
+              {name
+                ? `"${name}" is not on the guest list. Please check your invitation link.`
+                : "Please open your personalized invitation link to RSVP."}
+            </p>
+          </div>
+        )}
+        {authorized && toast && (
           <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-2xl px-4 py-3 mb-4 font-body">
             {toast}
           </div>
         )}
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        {authorized && <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Hidden fields */}
-          <input type="hidden" {...register("valid_for", { valueAsNumber: true })} />
           <input type="hidden" {...register("adult_attendees", { valueAsNumber: true })} />
           <input type="hidden" {...register("child_attendees", { valueAsNumber: true })} />
 
@@ -189,9 +211,6 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
           <div className="space-y-4">
             <div className="flex items-center justify-between text-xs font-body text-gray-400">
               <span className="font-body font-semibold text-gray-700 text-sm">Number of Attendees *</span>
-              <span>
-                {adults + children}/{validFor} used
-              </span>
             </div>
 
             {/* Adults */}
@@ -215,7 +234,7 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
                 <button
                   type="button"
                   onClick={incrementAdults}
-                  disabled={adults + children >= validFor}
+                  disabled={maxAdults === null || adults >= maxAdults}
                   className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
                   aria-label="Increase adults"
                 >
@@ -250,7 +269,7 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
                 <button
                   type="button"
                   onClick={incrementChildren}
-                  disabled={adults + children >= validFor}
+                  disabled={maxChildren === null || children >= maxChildren}
                   className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
                   aria-label="Increase children"
                 >
@@ -339,7 +358,7 @@ export default function RSVPForm({ validFor, name }: RSVPFormProps) {
               "RSVP Now! 🎊"
             )}
           </button>
-        </form>
+        </form>}
         </div>
       </motion.section>
     </>
