@@ -268,7 +268,7 @@ export default function EnvelopeIntro({
           {!opened && (
             <motion.button
               onClick={handleOpen}
-              className="mt-9 px-9 py-3.5 rounded-full font-heading text-lg text-white shadow-xl relative overflow-hidden"
+              className="mt-9 px-9 py-3.5 rounded-full font-heading text-lg text-white shadow-xl relative overflow-hidden cursor-pointer"
               style={{ background: "linear-gradient(135deg, #5ab4d4, #3a9ab8, #2a7a98)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

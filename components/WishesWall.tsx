@@ -67,18 +67,18 @@ export default function WishesWall() {
       className="-mt-px px-4 py-10 bg-gradient-to-b from-[#A8D8EA] to-[#C5DFF0]"
     >
       <h2 className="font-heading text-3xl text-center text-[#2C5F7A] mb-6">
-        Wishes for Joash 🐚
+        Doa &amp; Ucapan untuk Joash 🐚
       </h2>
 
       {loading && (
         <div className="text-center text-gray-400 font-body py-8">
-          Loading wishes...
+          Memuat ucapan...
         </div>
       )}
 
       {!loading && wishes.length === 0 && (
         <div className="text-center text-[#2C5F7A] font-body py-8 text-lg">
-          Be the first to leave Joash a birthday wish! 🌟
+          Jadilah yang pertama memberikan ucapan ulang tahun untuk Joash! 🌟
         </div>
       )}
 

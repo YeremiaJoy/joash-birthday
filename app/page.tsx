@@ -1,4 +1,5 @@
 // app/invite/page.tsx
+import OneBanner from "@/components/OneBanner";
 import PersonalizedBanner from "@/components/PersonalizedBanner";
 import HeroSection from "@/components/HeroSection";
 import BirthdayHighlight from "@/components/BirthdayHighlight";
@@ -16,20 +17,22 @@ interface InvitePageProps {
 
 export default async function InvitePage({ searchParams }: InvitePageProps) {
   const params = await searchParams;
-  const name = params.name ? decodeURIComponent(params.name) : null;
-  const invitee = name ? findInvitee(name) : null;
+  const rawName = params.name ? decodeURIComponent(params.name) : null;
+  const invitee = rawName ? findInvitee(rawName) : null;
+  const displayName = invitee?.fullName ?? rawName;
 
   return (
     <EnvelopeIntro>
       <main className="max-w-[430px] mx-auto min-h-screen relative">
-        {name && <PersonalizedBanner name={name} />}
+        <OneBanner />
+        {displayName && <PersonalizedBanner name={displayName} />}
         <HeroSection />
         <BirthdayHighlight />
         <EventDetails />
         <RSVPForm
           maxAdults={invitee?.adults ?? null}
           maxChildren={invitee?.children ?? null}
-          name={name}
+          name={displayName}
         />
         <WishesWall />
         <Footer />

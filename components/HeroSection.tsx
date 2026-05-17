@@ -45,6 +45,9 @@ export default function HeroSection() {
       />
 
       <div className="relative z-10 flex flex-col items-center text-center pt-8 pb-12">
+        <h2 className="font-heading text-3xl text-center text-[#2C5F7A] mb-4">
+          The Birthday Boy!
+        </h2>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,42 +56,50 @@ export default function HeroSection() {
         >
           <div
             className="border-4 border-dashed border-[#8FC4B7] rounded-xl flex flex-col items-center justify-center text-[#8FC4B7] bg-[#E8F4FD]"
-            style={{ width: 216, height: 280 }}
+            style={{ width: 380, height: 280, backgroundColor: "#eef9fc" }}
           >
-            <span className="text-5xl mb-3">📸</span>
-            <span className="text-sm font-body text-center px-2">
-              [ Joash&apos;s Photo Here ]
-            </span>
+            <video
+              src="/video/Ai%20Joash.mp4"
+              autoPlay
+              loop
+              muted
+              className="rounded-md"
+              style={{ width: 360, height: 240, objectFit: "cover" }}
+              aria-label="Video Joash"
+            />
           </div>
-          <p className="font-heading text-[#2C5F7A] text-xs text-center mt-2">
-            Joash Jidly Yakobus
-          </p>
+          <div className="space-y-2 text-center font-body text-[#2C5F7A] mt-2">
+            <p className="text-xl font-bold">Joash Jidly Yakobus</p>
+            <p>Born: 6 Juli 2025 👶</p>
+            <p className="font-bold text-lg text-[#E8967A]">Turning 1 Year Old! 🐚</p>
+          </div>
         </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="font-heading text-4xl text-[#2C5F7A] mb-3 drop-shadow leading-tight px-4"
-        >
-          Joash&apos;s ONEderful Year 🐚
-        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="font-body text-lg text-[#2C5F7A] max-w-xs"
+          className="font-body text-md text-[#2C5F7A] max-w-xs"
         >
-          Come celebrate Joash&apos;s 1st Birthday! 🐚
+          Little Joash is turning <strong>ONE</strong> and we want YOU there to celebrate with us! 🥳
         </motion.p>
+        <motion.a
+          href="#rsvp"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="mt-4 inline-block text-[#2C5F7A] hover:text-[#E8967A]"
+          aria-label="Scroll to RSVP"
+        >
+          <span className="text-2xl animate-bounce" aria-hidden="true">⬇️</span>
+        </motion.a>
 
         <motion.a
           href="#rsvp"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-8 bg-[#E8967A] text-[#F8FBFF] font-heading text-xl px-8 py-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform inline-block min-h-[44px]"
+          className="mt-6 bg-[#E8967A] text-[#F8FBFF] font-heading text-xl px-8 py-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform inline-block min-h-[44px]"
         >
           RSVP Now 🐠
         </motion.a>

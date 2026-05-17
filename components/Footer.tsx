@@ -13,10 +13,10 @@ export default function Footer() {
           <OceanShell size={28} />
         </div>
         <p className="font-heading text-xl text-[#F8FBFF] mb-1">
-          With love, The Yakobus Family 💕
+          With Love, The Yakobus Family 💕
         </p>
         <p className="font-body text-sm text-[#A8D8EA]">
-          © 2026 Joash&apos;s 1st Birthday
+          © 2026
         </p>
       </footer>
     </>

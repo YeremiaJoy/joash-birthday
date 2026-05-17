@@ -29,36 +29,27 @@ export default function EventDetails() {
         />
 
         <h2 className="font-heading text-3xl text-center text-[#2C5F7A] mb-6 relative z-10">
-          Event Details 🌊
+          Detail Acara 🌊
         </h2>
 
         <div className="bg-[#F8FBFF] rounded-4xl p-6 shadow-sm space-y-4 mb-6 relative z-10">
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             <span className="text-2xl">📅</span>
-            <div>
-              <p className="font-heading text-lg text-[#2C5F7A]">
-                Saturday, 11 July 2026
-              </p>
-              <p className="font-body text-[#8FC4B7] text-sm">Date</p>
-            </div>
+            <p className="font-heading text-lg text-[#2C5F7A]">
+              Sabtu, 11 Juli 2026
+            </p>
           </div>
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             <span className="text-2xl">🕞</span>
-            <div>
-              <p className="font-heading text-lg text-[#2C5F7A]">
-                15.30 WIB
-              </p>
-              <p className="font-body text-[#8FC4B7] text-sm">Time</p>
-            </div>
+            <p className="font-heading text-lg text-[#2C5F7A]">
+              15.30 WIB
+            </p>
           </div>
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             <span className="text-2xl">🍱</span>
-            <div>
-              <p className="font-heading text-lg text-[#2C5F7A]">
-                HokBen Trina Buah Batu
-              </p>
-              <p className="font-body text-[#8FC4B7] text-sm">Venue</p>
-            </div>
+            <p className="font-heading text-lg text-[#2C5F7A]">
+              HokBen Trina Buah Batu
+            </p>
           </div>
           <div className="flex items-start gap-3">
             <span className="text-2xl">📍</span>
@@ -69,6 +60,15 @@ export default function EventDetails() {
               </p>
             </div>
           </div>
+
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">👕</span>
+            <p className="font-heading text-lg text-[#2C5F7A]">
+              Dresscode: Biru cerah atau putih
+            </p>
+          </div>
+
+          
 
           {/* Sandy floor decoration */}
           <div className="flex items-end justify-between pt-4 border-t border-[#E8D5B7]">
@@ -84,7 +84,7 @@ export default function EventDetails() {
         <div className="overflow-hidden border-4 border-dashed border-[#8FC4B7] rounded-3xl bg-[#E8F4FD] flex flex-col items-center justify-center mb-6 relative z-10">
           <img
             src="/maps.png"
-            alt="Map preview"
+            alt="Pratinjau Peta"
             className="w-full rounded-2xl shadow-sm"
           />
         </div>
@@ -95,7 +95,7 @@ export default function EventDetails() {
           rel="noopener noreferrer"
           className="block w-full bg-[#E8967A] text-[#F8FBFF] font-heading text-xl text-center py-4 rounded-full hover:scale-105 active:scale-95 transition-transform min-h-[44px] relative z-10"
         >
-          📍 Get directions
+          📍 Buka maps
         </a>
       </motion.section>
     </>

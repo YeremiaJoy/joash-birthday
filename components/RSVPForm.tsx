@@ -78,7 +78,6 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.name,
-          phone: data.phone,
           adult_attendees: data.adult_attendees,
           child_attendees: data.child_attendees,
           will_attend: data.will_attend,
@@ -88,7 +87,7 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
 
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
-        setToast((json as { error?: string }).error ?? "Something went wrong. Please try again.");
+        setToast((json as { error?: string }).error ?? "Terjadi kesalahan. Silakan coba lagi.");
         return;
       }
       reset();
@@ -109,7 +108,7 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
         }
       }
     } catch {
-      setToast("Network error. Please check your connection and try again.");
+      setToast("Gangguan jaringan. Mohon cek koneksimu dan coba lagi.");
     }
   }
 
@@ -130,21 +129,21 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
         id="rsvp"
       >
         <h2 className="font-heading text-3xl text-center text-[#F8FBFF] mb-2">
-          RSVP 🐠
+          Konfirmasi Kehadiran 🐠
         </h2>
         {authorized ? (
           <p className="text-center text-[#F8FBFF] font-body mb-6 text-sm">
-            This invitation allows up to{" "}
+            Undangan ini berlaku untuk {" "}
             <span className="font-bold text-[#1c6e95]">
-              {maxAdults} adult{maxAdults !== 1 ? "s" : ""}
+              {maxAdults} dewasa
             </span>
             {maxChildren! > 0 && (
-              <> &amp; <span className="font-bold text-[#1c6e95]">{maxChildren} child{maxChildren !== 1 ? "ren" : ""}</span></>
+              <> &amp; <span className="font-bold text-[#1c6e95]">{maxChildren} anak</span></>
             )}
           </p>
         ) : (
           <p className="text-center text-[#F8FBFF] font-body mb-6 text-sm">
-            {name ? "Your name is not on the invitation list." : "No invitation found."}
+            {name ? "Nama kamu tidak ada di daftar undangan." : "Undangan tidak ditemukan."}
           </p>
         )}
 
@@ -154,8 +153,9 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
             <p className="font-heading text-2xl text-[#2C5F7A] mb-2">🚫</p>
             <p className="font-body text-gray-600 text-sm">
               {name
-                ? `"${name}" is not on the guest list. Please check your invitation link.`
-                : "Please open your personalized invitation link to RSVP."}
+                ? `"${name}" tidak ada dalam daftar tamu. Mohon cek tautan undanganmu.`
+                : "Mohon buka tautan undangan pribadimu untuk konfirmasi kehadiran."
+              }
             </p>
           </div>
         )}
@@ -173,12 +173,14 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
           {/* Full Name */}
           <div>
             <label htmlFor="rsvp-name" className="block text-sm font-body font-semibold text-gray-700 mb-1">
-              Full Name *
+              Nama *
             </label>
             <input
               id="rsvp-name"
+              disabled
+              aria-disabled="true"
               {...register("name")}
-              placeholder="Your full name"
+              placeholder="Nama lengkap kamu"
               className="w-full border-2 border-gray-200 rounded-2xl px-4 py-3 text-base font-body focus:outline-none focus:border-[#8FC4B7] transition-colors min-h-[44px]"
             />
             {errors.name && (
@@ -188,106 +190,10 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
             )}
           </div>
 
-          {/* Phone */}
-          <div>
-            <label htmlFor="rsvp-phone" className="block text-sm font-body font-semibold text-gray-700 mb-1">
-              Phone / WhatsApp *
-            </label>
-            <input
-              id="rsvp-phone"
-              {...register("phone")}
-              type="tel"
-              placeholder="Your phone number"
-              className="w-full border-2 border-gray-200 rounded-2xl px-4 py-3 text-base font-body focus:outline-none focus:border-[#8FC4B7] transition-colors min-h-[44px]"
-            />
-            {errors.phone && (
-              <p role="alert" className="text-red-500 text-xs mt-1 font-body">
-                {errors.phone.message}
-              </p>
-            )}
-          </div>
-
-          {/* Attendees Steppers */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between text-xs font-body text-gray-400">
-              <span className="font-body font-semibold text-gray-700 text-sm">Number of Attendees *</span>
-            </div>
-
-            {/* Adults */}
-            <div>
-              <label className="block text-sm font-body font-semibold text-gray-700 mb-2">
-                Adults
-              </label>
-              <div className="flex items-center gap-4">
-                <button
-                  type="button"
-                  onClick={decrementAdults}
-                  disabled={adults <= 1}
-                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
-                  aria-label="Decrease adults"
-                >
-                  −
-                </button>
-                <span className="font-heading text-2xl text-[#2C5F7A] w-8 text-center">
-                  {adults}
-                </span>
-                <button
-                  type="button"
-                  onClick={incrementAdults}
-                  disabled={maxAdults === null || adults >= maxAdults}
-                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
-                  aria-label="Increase adults"
-                >
-                  +
-                </button>
-              </div>
-              {errors.adult_attendees && (
-                <p role="alert" className="text-red-500 text-xs mt-1 font-body">
-                  {errors.adult_attendees.message}
-                </p>
-              )}
-            </div>
-
-            {/* Children */}
-            <div>
-              <label className="block text-sm font-body font-semibold text-gray-700 mb-2">
-                Children
-              </label>
-              <div className="flex items-center gap-4">
-                <button
-                  type="button"
-                  onClick={decrementChildren}
-                  disabled={children <= 0}
-                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
-                  aria-label="Decrease children"
-                >
-                  −
-                </button>
-                <span className="font-heading text-2xl text-[#2C5F7A] w-8 text-center">
-                  {children}
-                </span>
-                <button
-                  type="button"
-                  onClick={incrementChildren}
-                  disabled={maxChildren === null || children >= maxChildren}
-                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
-                  aria-label="Increase children"
-                >
-                  +
-                </button>
-              </div>
-              {errors.child_attendees && (
-                <p role="alert" className="text-red-500 text-xs mt-1 font-body">
-                  {errors.child_attendees.message}
-                </p>
-              )}
-            </div>
-          </div>
-
           {/* Will Attend Radio */}
           <div>
             <label className="block text-sm font-body font-semibold text-gray-700 mb-2">
-              Will you attend? *
+              Apakah kamu bisa hadir? *
             </label>
             <div className="space-y-2">
               <label className="flex items-center gap-3 cursor-pointer bg-green-50 border-2 border-transparent rounded-2xl px-4 py-3 has-[:checked]:border-green-400 transition-colors min-h-[44px]">
@@ -302,7 +208,7 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
                   className="w-5 h-5 accent-green-500"
                 />
                 <span className="font-body text-gray-700">
-                  Yes, I'll be there! 🎉
+                  Iya, aku datang! 🎉
                 </span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer bg-gray-50 border-2 border-transparent rounded-2xl px-4 py-3 has-[:checked]:border-gray-400 transition-colors min-h-[44px]">
@@ -317,7 +223,7 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
                   className="w-5 h-5 accent-gray-500"
                 />
                 <span className="font-body text-gray-700">
-                  Sadly, I can't make it 😢
+                  Maaf, aku tidak bisa hadir 😢
                 </span>
               </label>
             </div>
@@ -326,19 +232,98 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
                 {errors.will_attend.message}
               </p>
             )}
-          </div>
+          </div>          
+
+          {/* Attendees Steppers */}
+          {willAttend === true && (
+            <div className="space-y-4">
+            <div className="flex items-center justify-between text-xs font-body text-gray-400">
+              <span className="font-body font-semibold text-gray-700 text-sm">Jumlah tamu yang akan hadir *</span>
+            </div>
+
+            {/* Adults */}
+            <div>
+              <label className="block text-sm font-body font-semibold text-gray-700 mb-2">
+                Dewasa
+              </label>
+              <div className="flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={decrementAdults}
+                  disabled={adults <= 1}
+                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
+                  aria-label="Kurangi dewasa"
+                >
+                  −
+                </button>
+                <span className="font-heading text-2xl text-[#2C5F7A] w-8 text-center">
+                  {adults}
+                </span>
+                <button
+                  type="button"
+                  onClick={incrementAdults}
+                  disabled={maxAdults === null || adults >= maxAdults}
+                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
+                  aria-label="Tambah dewasa"
+                >
+                  +
+                </button>
+              </div>
+              {errors.adult_attendees && (
+                <p role="alert" className="text-red-500 text-xs mt-1 font-body">
+                  {errors.adult_attendees.message}
+                </p>
+              )}
+            </div>
+
+            {/* Children */}
+            <div>
+              <label className="block text-sm font-body font-semibold text-gray-700 mb-2">
+                Anak-anak
+              </label>
+              <div className="flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={decrementChildren}
+                  disabled={children <= 0}
+                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
+                  aria-label="Kurangi anak-anak"
+                >
+                  −
+                </button>
+                <span className="font-heading text-2xl text-[#2C5F7A] w-8 text-center">
+                  {children}
+                </span>
+                <button
+                  type="button"
+                  onClick={incrementChildren}
+                  disabled={maxChildren === null || children >= maxChildren}
+                  className="w-11 h-11 rounded-full bg-gray-100 text-gray-700 text-xl font-bold disabled:opacity-40 hover:bg-gray-200 transition-colors flex items-center justify-center"
+                  aria-label="Tambah anak-anak"
+                >
+                  +
+                </button>
+              </div>
+              {errors.child_attendees && (
+                <p role="alert" className="text-red-500 text-xs mt-1 font-body">
+                  {errors.child_attendees.message}
+                </p>
+              )}
+            </div>
+            </div>
+          )}
 
           {/* Message (optional) */}
           <div>
             <label htmlFor="rsvp-message" className="block text-sm font-body font-semibold text-gray-700 mb-1">
-              Message for Joash{" "}
-              <span className="text-gray-400 font-normal">(optional)</span>
+              Doa & ucapan untuk Joash{" "}
+              <span className="text-gray-400 font-normal">(opsional)</span>
             </label>
             <textarea
               id="rsvp-message"
               {...register("message")}
               rows={3}
-              placeholder="Leave a birthday wish for Joash! 🎂"
+              placeholder="Titip ucapan selamat ulang tahun untuk Joash! 🎂"
               className="w-full border-2 border-gray-200 rounded-2xl px-4 py-3 text-base font-body focus:outline-none focus:border-[#8FC4B7] transition-colors resize-none"
             />
           </div>
@@ -352,7 +337,7 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
             {isSubmitting ? (
               <>
                 <span className="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Sending...
+                Mengirim...
               </>
             ) : (
               "RSVP Now! 🎊"

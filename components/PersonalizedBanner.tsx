@@ -23,9 +23,9 @@ export default function PersonalizedBanner({ name }: PersonalizedBannerProps) {
       </span>
 
       <p className="font-heading text-base text-lg text-[#2C5F7A] px-10 drop-shadow leading-tight">
-        Hi, {name}! 👋{" "}
+        Halo, {name}! 👋{" "}
         <span className="block text-sm mt-0.5">
-          You&apos;re personally invited to Joash&apos;s 1st Birthday! 🐠
+          Kamu diundang khusus ke Ulang Tahun Pertama Joash! 🐠
         </span>
       </p>
     </motion.div>

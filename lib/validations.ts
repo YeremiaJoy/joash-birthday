@@ -2,12 +2,11 @@
 import { z } from "zod";
 
 export const rsvpSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  phone: z.string().min(6, "Phone number is required"),
-  adult_attendees: z.number().int().min(1, "At least 1 adult is required"),
-  child_attendees: z.number().int().min(0, "Cannot be negative"),
+  name: z.string().min(2, "Nama harus minimal 2 karakter"),
+  adult_attendees: z.number().int().min(1, "Minimal 1 orang dewasa wajib hadir"),
+  child_attendees: z.number().int().min(0, "Tidak boleh negatif"),
   will_attend: z.boolean({
-    error: "Please select whether you will attend",
+    error: "Mohon pilih apakah kamu bisa hadir",
   }),
   message: z.string().optional(),
 });

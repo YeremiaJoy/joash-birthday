@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: firstError }, { status: 422 });
   }
 
-  const { name, phone, adult_attendees, child_attendees, will_attend, message } =
+  const { name, adult_attendees, child_attendees, will_attend, message } =
     parsed.data;
 
   // Validate name against the invitation list
@@ -50,7 +50,6 @@ export async function POST(request: Request) {
 
   const { error } = await supabase.from("rsvp").insert({
     name,
-    phone,
     adult_attendees,
     child_attendees,
     valid_for,
