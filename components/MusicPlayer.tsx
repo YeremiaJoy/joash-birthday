@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { registerAudio } from "@/lib/audioContext";
 
 const AUDIO_URL = '/audio/joash-birthday.mp3';
 
@@ -13,8 +14,8 @@ export default function MusicPlayer() {
   useEffect(() => {
     audioRef.current = new Audio(AUDIO_URL);
     audioRef.current.loop = true;
-    // Start unmuted; audible autoplay may be blocked by browser policies
     audioRef.current.muted = false;
+    registerAudio(audioRef.current);
 
     audioRef.current.play().then(() => {
       setStarted(true);

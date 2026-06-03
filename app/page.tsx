@@ -3,6 +3,7 @@ import OneBanner from "@/components/OneBanner";
 import PersonalizedBanner from "@/components/PersonalizedBanner";
 import HeroSection from "@/components/HeroSection";
 import BirthdayHighlight from "@/components/BirthdayHighlight";
+import LyricsSection from "@/components/LyricsSection";
 import EventDetails from "@/components/EventDetails";
 import RSVPForm from "@/components/RSVPForm";
 import WishesWall from "@/components/WishesWall";
@@ -28,6 +29,7 @@ export default async function InvitePage({ searchParams }: InvitePageProps) {
         {displayName && <PersonalizedBanner name={displayName} />}
         <HeroSection />
         <BirthdayHighlight />
+        <LyricsSection />
         <EventDetails />
         <RSVPForm
           maxAdults={invitee?.adults ?? null}

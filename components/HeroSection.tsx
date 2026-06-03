@@ -59,7 +59,7 @@ export default function HeroSection() {
             style={{ width: 380, height: 280, backgroundColor: "#eef9fc" }}
           >
             <video
-              src="/video/Ai%20Joash.mp4"
+              src="/video/ai-Joash.mp4"
               autoPlay
               loop
               muted

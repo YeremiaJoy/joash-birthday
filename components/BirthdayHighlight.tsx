@@ -39,14 +39,17 @@ export default function BirthdayHighlight() {
           From birth to his first birthday!
         </p>
 
-        <div
-          className="relative w-full rounded-3xl overflow-hidden border-4 border-dashed border-[#8FC4B7] bg-[#E8F4FD] flex flex-col items-center justify-center"
-          style={{ aspectRatio: "16/9" }}
-        >
-          <span className="text-5xl mb-2">▶️</span>
-          <span className="text-sm font-body text-[#8FC4B7] text-center px-4">
-            [ Video / Slideshow Ulang Tahun Di Sini ]
-          </span>
+        <div className="relative w-full rounded-3xl overflow-hidden border-4 border-[#8FC4B7] bg-black">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          >
+            <source src="/video/PhotoClip-Joash.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <div className="relative h-16 mt-4 overflow-hidden rounded-xl">
