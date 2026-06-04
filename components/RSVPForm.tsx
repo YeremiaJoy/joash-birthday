@@ -13,10 +13,12 @@ interface RSVPFormProps {
   maxAdults: number | null;
   maxChildren: number | null;
   name: string | null;
+  alreadyRsvped?: boolean;
 }
 
-export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps) {
+export default function RSVPForm({ maxAdults, maxChildren, name, alreadyRsvped = false }: RSVPFormProps) {
   const authorized = maxAdults !== null && maxChildren !== null;
+  const [alreadyDone, setAlreadyDone] = useState(alreadyRsvped);
   const [showSuccess, setShowSuccess] = useState(false);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
@@ -87,6 +89,11 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
 
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
+        // 409 = guest already RSVP'd; switch to the confirmation panel.
+        if (res.status === 409) {
+          setAlreadyDone(true);
+          return;
+        }
         setToast((json as { error?: string }).error ?? "Terjadi kesalahan. Silakan coba lagi.");
         return;
       }
@@ -94,6 +101,7 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
       setAdults(1);
       setChildren(0);
       setWillAttend(null);
+      setAlreadyDone(true);
       setShowSuccess(true);
 
       // Trigger wishes API to refresh any external caches or listeners.
@@ -159,13 +167,26 @@ export default function RSVPForm({ maxAdults, maxChildren, name }: RSVPFormProps
             </p>
           </div>
         )}
-        {authorized && toast && (
+        {authorized && alreadyDone && (
+          <div className="text-center py-6">
+            <p className="font-heading text-3xl mb-2">🎉</p>
+            <p className="font-heading text-2xl text-[#2C5F7A] mb-2">
+              Konfirmasi sudah diterima!
+            </p>
+            <p className="font-body text-gray-600 text-sm">
+              Terima kasih{name ? `, ${name}` : ""}. Kami sudah mencatat konfirmasi
+              kehadiranmu. Sampai jumpa di acara! 🐠
+            </p>
+          </div>
+        )}
+
+        {authorized && !alreadyDone && toast && (
           <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-2xl px-4 py-3 mb-4 font-body">
             {toast}
           </div>
         )}
 
-        {authorized && <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        {authorized && !alreadyDone && <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Hidden fields */}
           <input type="hidden" {...register("adult_attendees", { valueAsNumber: true })} />
           <input type="hidden" {...register("child_attendees", { valueAsNumber: true })} />

@@ -11,6 +11,7 @@ import MusicPlayer from "@/components/MusicPlayer";
 import Footer from "@/components/Footer";
 import EnvelopeIntro from "@/components/EnvelopeIntro";
 import { findInvitee } from "@/lib/invitation";
+import { hasExistingRsvp } from "@/lib/rsvp";
 
 interface InvitePageProps {
   searchParams: Promise<{ name?: string }>;
@@ -21,6 +22,7 @@ export default async function InvitePage({ searchParams }: InvitePageProps) {
   const rawName = params.name ? decodeURIComponent(params.name) : null;
   const invitee = rawName ? findInvitee(rawName) : null;
   const displayName = invitee?.fullName ?? rawName;
+  const alreadyRsvped = invitee ? await hasExistingRsvp(invitee.fullName) : false;
 
   return (
     <EnvelopeIntro>
@@ -35,6 +37,7 @@ export default async function InvitePage({ searchParams }: InvitePageProps) {
           maxAdults={invitee?.adults ?? null}
           maxChildren={invitee?.children ?? null}
           name={displayName}
+          alreadyRsvped={alreadyRsvped}
         />
         <WishesWall />
         <Footer />

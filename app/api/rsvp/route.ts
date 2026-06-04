@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { rsvpSchema } from "@/lib/validations";
 import { findInvitee } from "@/lib/invitation";
+import { hasExistingRsvp } from "@/lib/rsvp";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -46,10 +47,18 @@ export async function POST(request: Request) {
     );
   }
 
+  // Prevent duplicate submissions: a guest may only RSVP once.
+  if (await hasExistingRsvp(invitee.fullName)) {
+    return NextResponse.json(
+      { error: "Kamu sudah melakukan konfirmasi kehadiran sebelumnya. Terima kasih! 🎉" },
+      { status: 409 }
+    );
+  }
+
   const valid_for = invitee.adults + invitee.children;
 
   const { error } = await supabase.from("rsvp").insert({
-    name,
+    name: invitee.fullName,
     adult_attendees,
     child_attendees,
     valid_for,

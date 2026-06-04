@@ -1,51 +1,55 @@
 KEYWORD,NAMA LENGKAP,ADULT,CHILDREN
-LUSI,ONTI LUSI & KOKO JASPER,1,1
-ORI,"UNCLE ORI, ONTI HELEN & KOKO NUEL",2,1
-IRVAN,"UNCLE IRVAN, ONTI KEZIA & CICI LEORA",2,1
-HENDRY,"UNCLE HENDRY, ONTI BER, KOKO JEVAN & KOKO EFRAN",2,2
-RYAN,"OTIOH RYAN, OOH LYDIA, CICI SHERYL & KOKO MARVEL",2,2
-SHANDY,"OTIOH SHANDY, OOH LIA & CICI TICIA",2,1
-ANI,"KOTIOH JOHN, AKOH ANI, CICI CAITHLYN & KOKO CASEY",2,2
-IVAN,"UNCLE IVAN, ONTI TAMMY, CICI ELENA & CICI ELORA",2,2
-DAVID,"SUKSUK DAVID, ONTI ELA & CICI SHEILA",2,1
-RAYMOND,"ITIOH RAYMOND, AIH ICA & CICI SERA",2,1
-SIANI,OMA SIANI,1,1
-CHRISTY,"AIH CHRISTY, CICI ZHEA & CICI ZHIE",1,2
-FRIL,ONTI FRIL & KOKO JASON,1,1
-GRACE,ONTI GRACE & FAMILY,2,2
-PETRUS,"NCEK PETRUS, NCIM MANDY, CICI RICHELLE & CICI CLAIRE",2,2
-SAKU,KUKONG BENYAMIN & KIMPOH LISYE,2,0
-RYAN,"OTIOH RYAN, OOH FANNY & KOKO VINCE",2,1
-JONATAN,"UNCLE JONATAN ONTI MARISSA, CICI CLAIRINE & KOKO JAZEL",2,2
-EFERT,"UNCLE EFFERT, ONTI MARLIN & CICI EVELYN",2,1
-RENODIL,"UNCLE RENODIL, ONTI MEGA, CICI CIA & CICI CIELA",2,2
-YUSAK,"UNCLE YUSAK, ONTI VITA & KOKO SEAN",2,1
-DANIEL,"UNCLE DANIEL, ONTI TYA & CICI TIFA",2,1
-SEPTO,"UNCLE SEPTO, ONTI TITIN & PALTIEL",2,1
-ANDI,"OM ANDY, TANTE FANNY & BRIELL",2,1
-ADRIAN,"UNCLE ADRIAN, ONTI YUNI & AUSTIN",2,1
-WIWIL,"UNCLE WILLIAM, ONTI VICA & ERREN",2,1
-XIUNG,"ICHONG XIUNG, II CIA & OLIVER",2,1
-AFIH,KYUKUNG AFIH,1,0
-IWAN,"IKUNG IWAN, IPOH NIFONG, KYUH STEVEN & KIUH DAVID",4,0
-AFON,"KYUKUNG AFON, KYUPOH LIE MEY, KYUH WILBERT & KYUH ROBERT",4,0
-SISKA MK,ONTI SISKA,1,0
-CLA CHEN,ONTI SHIELLA,1,0
-ALME,ONTI ALME,1,0
-YULI,ONTI YULI,1,0
-IRA,ONTI IRA,1,0
-SAKHO,ONTI SAKHO & HUSBAND,1,0
-PILIPUS OBADJA,OPA PILIPUS,1,0
-PETRUS OBADJA,GRANDPA PIET & GRANDMA LIDIA,2,0
-GIDEON EDDY,OPA EDDY & OMA DEBBY,2,0
-HARRY,"IKUNG HARRY, IPOH EENG, NCEK IYOS & OOH LALA ",4,0
-NATAN,NCEK NATAN & NCIM FENNY,2,0
-NYONYOH,IPOH NYONYOH,1,0
-JOHNY,IKUNG JOHNY & IPOH YOYO,2,0
-MBAW,KUKONG MBAW,1,0
-BETTY,IPOHTHAI BETTY & FAMILY,3,0
-IIP,UNCLE IIP,1,0
-AGUS,OPOH MARIE & HUSBAND,2,0
-TITI,OMA TITI,1,0
-JELY,UNCLE JELY & TANTE ELSA,2,0
-DION,UNCLE DION,1,0
+JIMMY,"Jimmy, Joy, Joash",2,1
+DEDY,"Opa Dedy, Oma Acien, Kyuh Sam, Kyuh Yo & Onti Tanti",5,0
+LUSI,Onti Lusi & Koko Jasper,1,1
+ORI,"Uncle Ori, Onti Helen & Koko Nuel",2,1
+IRVAN,"Uncle Irvan, Onti Kezia & Cici Leora",2,1
+HENDRY,"Uncle Hendry, Onti Ber, Koko Jevan & Koko Efran",2,2
+RYAN,"Otioh Ryan, Ooh Lydia, Cici Sheryl & Koko Marvel",2,2
+SHANDY,"Otioh Shandy, Ooh Lia & Cici Ticia",2,1
+ANI,"Kotioh John, Akoh Ani, Cici Caithlyn & Koko Casey",2,2
+IVAN,"Uncle Ivan, Onti Tammy, Cici Elena & Cici Elora",2,2
+DAVID,"Suksuk David, Onti Ela & Cici Sheila",2,1
+RAYMOND,"Itioh Raymond, Aih Ica & Cici Sera",2,1
+SIANI,Oma Siani,1,0
+CHRISTY,"Aih Christy, Cici Zhea & Cici Zhie",1,2
+FRIL,Onti Fril & Koko Jason,1,1
+PETRUS,"Ncek Petrus, Ncim Mandy, Cici Richelle & Cici Claire",2,2
+SAKU,Kukong Benyamin & Kimpoh Lisye,2,0
+RYAN,"Otioh Ryan, Ooh Fanny & Koko Vince",2,1
+JONATAN,"Uncle Jonatan, Onti Marissa, Cici Clairine & Koko Jazel",2,2
+EFERT,"Uncle Efert, Onti Marlin & Cici Evelyn",2,1
+RENODIL,"Uncle Renodil, Onti Mega, Cici Cia & Cici Ciela",2,2
+YUSAK,"Uncle Yusak, Onti Vita & Koko Sean",2,1
+DANIEL,"Uncle Daniel, Onti Tya & Cici Tifa",2,1
+SEPTO,"Uncle Septo, Onti Titin & Paltiel",2,1
+ANDI,"Om Andi, Tante Fanny & Briell",2,1
+ADRIAN,"Uncle Adrian, Onti Yuni & Austin",2,1
+WIWIL,"Uncle William, Onti Vica & Erren",2,1
+FIFI,"Uncle Doly, Onti Fifi & Cici Cia",2,1
+AFIH,Kyukung Afih,1,0
+IWAN,"Ikung Iwan, Ipoh Nifong, Kyuh Steven & Kyuh David",4,0
+AFON,"Kyukung Afon, Kyupoh Lie Mey, Kyuh Wilbert & Kyuh Robert",4,0
+SISKA MK,Onti Siska,1,0
+CLA CHEN,Onti Shiella,1,0
+ALME,Onti Alme,1,0
+YULI,Onti Yuli,1,0
+IRA,Onti Ira,1,0
+SAKHO,Onti Sakho,1,0
+PILIPUS OBADJA,Opa Pilipus Obadja,1,0
+PETRUS OBADJA,Grandpa Piet & Grandma Lidia,2,0
+GIDEON EDDY,Opa Eddy & Oma Debby,2,0
+HARRY,"Ikung Harry, Ipoh Eeng, Ncek Iyos & Ooh Lala ",4,0
+NATAN,Ncek Natan & Ncim Fenny,2,0
+NYONYOH,Ipoh Nyonyoh,1,0
+JOHNY,Ikung Johny & Ipoh Yoyo,2,0
+MBAW,Kukong Mbaw,1,0
+BETTY,Ipohthai Betty & Family,3,0
+IIP,Uncle Iip,1,0
+AGUS,Opoh Marie & Suami,2,0
+TITI,Oma Titi,1,0
+JELY,Uncle Jely & Tante Elsa,2,0
+DION,Uncle Dion,1,0
+ANGEL,"Uncle Inwan, Onti Angel, Koko Lio & Koko Iel",2,2
+XIUNG,"Ichong Xiung, Ii Cia & Koko Oliver",2,1
+CHRIS,Uncle Christian & Onti Frida,2,0
