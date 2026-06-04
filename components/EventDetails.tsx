@@ -48,7 +48,7 @@ export default function EventDetails() {
           <div className="flex items-center gap-3">
             <span className="text-2xl">🍱</span>
             <p className="font-heading text-lg text-[#2C5F7A]">
-              HokBen Trina Buah Batu
+              HokBen Trina Buah Batu (Lantai 2)
             </p>
           </div>
           <div className="flex items-start gap-3">

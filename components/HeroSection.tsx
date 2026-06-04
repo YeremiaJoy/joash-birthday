@@ -63,6 +63,7 @@ export default function HeroSection() {
               autoPlay
               loop
               muted
+              playsInline
               className="rounded-md"
               style={{ width: 360, height: 240, objectFit: "cover" }}
               aria-label="Video Joash"
