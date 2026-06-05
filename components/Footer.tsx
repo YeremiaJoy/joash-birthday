@@ -15,9 +15,22 @@ export default function Footer() {
         <p className="font-heading text-xl text-[#F8FBFF] mb-1">
           With Love, The Yakobus Family 💕
         </p>
-        <p className="font-body text-sm text-[#A8D8EA]">
-          © 2026
-        </p>
+        <div className="flex items-center justify-center gap-1 mb-1">
+          <p className="font-body text-sm text-[#A8D8EA]">
+            © 2026
+          </p>
+          <p className="font-body text-sm text-[#A8D8EA]">
+            Created by{" "}
+            <a
+              href="https://www.instagram.com/yrjoy_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[#F8FBFF] transition-colors"
+            >
+              Yeremia Joy
+            </a>
+          </p>
+        </div>
       </footer>
     </>
   );
