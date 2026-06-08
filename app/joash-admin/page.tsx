@@ -163,7 +163,7 @@ function RsvpTable({
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="bg-ocean-sky text-left text-ocean-deep print:bg-gray-100">
-                <th className="px-4 py-2 font-semibold">Name</th>
+                <th className="px-4 py-2 font-semibold min-w-[10rem]">Name</th>
                 {type === "attending" && (
                   <>
                     <th className="px-4 py-2 font-semibold text-center">Adults</th>
@@ -173,7 +173,9 @@ function RsvpTable({
                     <th className="px-4 py-2 font-semibold text-center">Total</th>
                   </>
                 )}
-                <th className="px-4 py-2 font-semibold">Message</th>
+                <th className="px-4 py-2 font-semibold min-w-[16rem]">
+                  Message
+                </th>
                 <th className="px-4 py-2 font-semibold">Submitted</th>
               </tr>
             </thead>
@@ -183,7 +185,9 @@ function RsvpTable({
                   key={r.id}
                   className="border-t border-ocean-shallow/60 align-top print:border-gray-200"
                 >
-                  <td className="px-4 py-2 font-medium">{r.name}</td>
+                  <td className="px-4 py-2 font-medium min-w-[10rem]">
+                    {r.name}
+                  </td>
                   {type === "attending" && (
                     <>
                       <td className="px-4 py-2 text-center">{r.adult_attendees}</td>
@@ -193,7 +197,7 @@ function RsvpTable({
                       </td>
                     </>
                   )}
-                  <td className="px-4 py-2 text-ocean-deep/80 max-w-xs">
+                  <td className="px-4 py-2 text-ocean-deep/80 min-w-[16rem] whitespace-pre-wrap break-words">
                     {r.message || "—"}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-ocean-deep/70">
